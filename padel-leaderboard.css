@@ -1,10 +1,14 @@
-.match-score {
+.match-info {
   display: flex;
 }
 
 .match-players {
   display: flex;
   flex-direction: column;
+}
+
+.match-score {
+  display: flex;
 }
 
 .match-set {
