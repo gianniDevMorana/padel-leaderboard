@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Padel tournament leaderboard</title>
     <link rel="stylesheet" href="padel-leaderboard.css" />
+    <script src="padel-leaderboard.js" defer></script>
   </head>
   <body>
     <h1>L'HOSPITALET PADEL RANKING</h1>
@@ -15,9 +16,10 @@
       <li>Dongjoo</li>
     </ol>
     <h2>MATCHES</h2>
-    <input type="date" />
-    <h3>Match 1</h3>
-    <div class="match-info">
+    <input id="match-date" type="date" />
+    <button id="add-match">Add match</button>
+    <div id="match-info">
+      <!-- <h3>Match 1</h3>
       <div class="match-players">
         <input id="player-1-match-1" type="text" />
         <input id="player-2-match-1" type="text" />
@@ -31,7 +33,7 @@
           <input type="number" />
           <input type="number" />
         </div>
-      </div>
+      </div> -->
     </div>
   </body>
 </html>

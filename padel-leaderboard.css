@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.match-display {
+  display: flex;
+}
+
 .match-players {
   display: flex;
   flex-direction: column;
