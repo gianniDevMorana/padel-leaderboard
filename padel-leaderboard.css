@@ -7,13 +7,13 @@
 }
 
 .match-players {
+  width: 200px;
   display: flex;
+  justify-content: space-around;
 }
 
 .match-score {
+  width: 200px;
   display: flex;
-}
-
-.match-set {
-  display: flex;
+  justify-content: space-around;
 }
