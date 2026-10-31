@@ -8,7 +8,6 @@
 
 .match-players {
   display: flex;
-  flex-direction: column;
 }
 
 .match-score {
@@ -17,5 +16,4 @@
 
 .match-set {
   display: flex;
-  flex-direction: column;
 }
