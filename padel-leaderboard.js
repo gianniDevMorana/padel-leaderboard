@@ -33,5 +33,18 @@ function createMatch() {
   matchInfo.appendChild(score);
   score.appendChild(score1Match);
   score.appendChild(score2Match);
+
+  localStorage.setItem("Player 1", JSON.stringify(player1.value));
+  localStorage.setItem("Player 2", JSON.stringify(player2.value));
+
+  if (player1LocalStorage && player2LocalStorage) {
+  player1Match.innerText = player1LocalStorage;
+  player2Match.innerText = player2LocalStorage;
+}
+
   return matchNumber;
 }
+
+let player1LocalStorage = JSON.parse(localStorage.getItem("Player 1"));
+let player2LocalStorage = JSON.parse(localStorage.getItem("Player 2"));
+
