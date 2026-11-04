@@ -1,10 +1,19 @@
 #match-info {
   width: 210px;
-  height: 200px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.match-display {
+  width: 210px;
+  height: 150px;
   display: flex;
   flex-direction: column;
   text-align: center;
   border: 2px solid black;
+  padding-bottom: 50px;
 }
 
 .match-players {

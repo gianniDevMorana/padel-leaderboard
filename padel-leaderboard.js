@@ -9,6 +9,7 @@ addMatchBtn.addEventListener("click", createMatch);
 
 function createMatch() {
   const matchInfo = document.getElementById("match-info");
+  matchInfo.setAttribute("class", "match-display");
   const date = document.createElement("p");
   date.innerText = matchDate.value;
   const matchNumber = document.createElement("h3");
