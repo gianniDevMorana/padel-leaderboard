@@ -16,12 +16,7 @@
   padding-bottom: 50px;
 }
 
-.match-players {
-  width: 200px;
-  display: flex;
-  justify-content: space-around;
-}
-
+.match-players,
 .match-score {
   width: 200px;
   display: flex;
