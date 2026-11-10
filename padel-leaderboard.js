@@ -37,9 +37,12 @@ function generateMatchCard(timestamp, p1, p2, scoreP1, scoreP2, matchNum) {
 }
 
 function createMatch() {
+  
+  
+
 
   const match = {
-    date: "newDate",
+    date: matchDate.value,
     p1: player1.value,
     p2: player2.value,
     scoreP1: score1.value,
