@@ -8,13 +8,11 @@ const score2 = document.getElementById("score-2");
 
 addMatchBtn.addEventListener("click", createMatch);
 
-function generateMatchCard(date, time, p1, p2, scoreP1, scoreP2, matchNum) {
+function generateMatchCard(timestamp, p1, p2, scoreP1, scoreP2, matchNum) {
   const matchInfo = document.getElementById("match-info");
   matchInfo.setAttribute("class", "match-display");
   const dateMatch = document.createElement("p");
-  dateMatch.innerText = date;
-  const timeMatch = document.createElement("p");
-  timeMatch.innerText = time;
+  dateMatch.innerText = timestamp;
   const matchNumber = document.createElement("h3");
   matchNumber.innerText = `Match ${matchNum}`;
   const players = document.createElement("div");
@@ -30,7 +28,6 @@ function generateMatchCard(date, time, p1, p2, scoreP1, scoreP2, matchNum) {
   const score2Match = document.createElement("p");
   score2Match.innerText = scoreP2;
   matchInfo.appendChild(dateMatch);
-  matchInfo.appendChild(timeMatch);
   matchInfo.appendChild(matchNumber);
   matchInfo.appendChild(players);
   players.appendChild(player1Match);
@@ -41,10 +38,15 @@ function generateMatchCard(date, time, p1, p2, scoreP1, scoreP2, matchNum) {
 }
 
 function createMatch() {
+  const dateTime = matchDate.value + " " + matchTime.value;
+
+  console.log(dateTime);
+
+  const dateMatch = new Date(dateTime);
+
 
   const match = {
-    date: matchDate.value,
-    time: matchTime.value,
+    date: dateMatch,
     p1: player1.value,
     p2: player2.value,
     scoreP1: score1.value,
@@ -59,7 +61,7 @@ function createMatch() {
 
   const matches = JSON.parse(localStorage.getItem("matches"));
 
-  generateMatchCard(match.date, match.time, match.p1, match.p2, match.scoreP1, match.scoreP2, matches.length + 1);
+  generateMatchCard(match.date, match.p1, match.p2, match.scoreP1, match.scoreP2, matches.length + 1);
 
   matches.push(match);
   console.log(matches);
