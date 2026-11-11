@@ -3,12 +3,12 @@ const matchDate = document.getElementById("match-date");
 const matchTime = document.getElementById("match-time");
 const player1 = document.getElementById("player-1");
 const player2 = document.getElementById("player-2");
-const score1 = document.getElementById("score-1");
-const score2 = document.getElementById("score-2");
+// const score1 = document.getElementById("score-1");
+// const score2 = document.getElementById("score-2");
 
 addMatchBtn.addEventListener("click", createMatch);
 
-function generateMatchCard(timestamp, p1, p2, scoreP1, scoreP2, matchNum) {
+function generateMatchCard(timestamp, p1, p2, matchNum) {
   const matchInfo = document.getElementById("match-info");
   matchInfo.setAttribute("class", "match-display");
   const dateMatch = document.createElement("p");
@@ -21,20 +21,20 @@ function generateMatchCard(timestamp, p1, p2, scoreP1, scoreP2, matchNum) {
   player1Match.innerText = p1;
   const player2Match = document.createElement("p");
   player2Match.innerText = p2;
-  const score = document.createElement("div");
-  score.setAttribute("class", "match-score");
-  const score1Match = document.createElement("p");
-  score1Match.innerText = scoreP1;
-  const score2Match = document.createElement("p");
-  score2Match.innerText = scoreP2;
+  // const score = document.createElement("div");
+  // score.setAttribute("class", "match-score");
+  // const score1Match = document.createElement("p");
+  // score1Match.innerText = scoreP1;
+  // const score2Match = document.createElement("p");
+  // score2Match.innerText = scoreP2;
   matchInfo.appendChild(dateMatch);
   matchInfo.appendChild(matchNumber);
   matchInfo.appendChild(players);
   players.appendChild(player1Match);
   players.appendChild(player2Match);
-  matchInfo.appendChild(score);
-  score.appendChild(score1Match);
-  score.appendChild(score2Match);
+  // matchInfo.appendChild(score);
+  // score.appendChild(score1Match);
+  // score.appendChild(score2Match);
 }
 
 function createMatch() {
@@ -49,8 +49,8 @@ function createMatch() {
     date: dateMatch.getTime(),
     p1: player1.value,
     p2: player2.value,
-    scoreP1: score1.value,
-    scoreP2: score2.value,
+    // scoreP1: score1.value,
+    // scoreP2: score2.value,
   };
 
   console.log(match);
@@ -61,7 +61,7 @@ function createMatch() {
 
   const matches = JSON.parse(localStorage.getItem("matches"));
 
-  generateMatchCard(match.date, match.p1, match.p2, match.scoreP1, match.scoreP2, matches.length + 1);
+  generateMatchCard(match.date, match.p1, match.p2, matches.length + 1);
 
   matches.push(match);
   console.log(matches);
@@ -81,7 +81,7 @@ function onLoad() {
     console.log(match.scoreP2);
     console.log(i + 1);
 
-     generateMatchCard(match.date, match.p1, match.p2, match.scoreP1, match.scoreP2, i + 1);
+     generateMatchCard(match.date, match.p1, match.p2, i + 1);
   }
 }
 
