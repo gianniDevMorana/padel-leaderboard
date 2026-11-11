@@ -12,9 +12,12 @@
   padding-bottom: 50px;
 }
 
-.match-players,
-.match-score {
+.match-players {
   width: 200px;
   display: flex;
   justify-content: space-around;
+}
+
+.match-sets {
+  display: flex;
 }

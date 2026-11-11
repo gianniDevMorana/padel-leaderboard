@@ -3,12 +3,10 @@ const matchDate = document.getElementById("match-date");
 const matchTime = document.getElementById("match-time");
 const player1 = document.getElementById("player-1");
 const player2 = document.getElementById("player-2");
-// const score1 = document.getElementById("score-1");
-// const score2 = document.getElementById("score-2");
 
 addMatchBtn.addEventListener("click", createMatch);
 
-function generateMatchCard(timestamp, p1, p2, matchNum) {
+function generateMatchCard(timestamp, p1, p2, matchNum, ) {
   const matchInfo = document.getElementById("match-info");
   matchInfo.setAttribute("class", "match-display");
   const dateMatch = document.createElement("p");
@@ -21,20 +19,16 @@ function generateMatchCard(timestamp, p1, p2, matchNum) {
   player1Match.innerText = p1;
   const player2Match = document.createElement("p");
   player2Match.innerText = p2;
-  // const score = document.createElement("div");
-  // score.setAttribute("class", "match-score");
-  // const score1Match = document.createElement("p");
-  // score1Match.innerText = scoreP1;
-  // const score2Match = document.createElement("p");
-  // score2Match.innerText = scoreP2;
+  const addSetBtn = document.createElement("button");
+  addSetBtn.innerHTML = "Add Set";
+  console.log(addSetBtn);
+  addSetBtn.addEventListener("click", createSet);
   matchInfo.appendChild(dateMatch);
   matchInfo.appendChild(matchNumber);
   matchInfo.appendChild(players);
   players.appendChild(player1Match);
   players.appendChild(player2Match);
-  // matchInfo.appendChild(score);
-  // score.appendChild(score1Match);
-  // score.appendChild(score2Match);
+  matchInfo.appendChild(addSetBtn);
 }
 
 function createMatch() {
@@ -43,7 +37,6 @@ function createMatch() {
   console.log(dateTime);
 
   const dateMatch = new Date(dateTime);
-
 
   const match = {
     date: dateMatch.getTime(),
@@ -67,6 +60,19 @@ function createMatch() {
   console.log(matches);
 
   localStorage.setItem("matches", JSON.stringify(matches));
+}
+
+function createSet() {
+  const matchInfo = document.getElementById("match-info");
+  const matchSets = document.createElement("div");
+  matchSets.setAttribute("class", "match-sets")
+  const player1Set = document.createElement("input");
+  player1Set.setAttribute("type", "number");
+  const player2Set = document.createElement("input");
+  player2Set.setAttribute("type", "number");
+  matchInfo.appendChild(matchSets);
+  matchSets.appendChild(player1Set);
+  matchSets.appendChild(player2Set);
 }
 
 function onLoad() {
