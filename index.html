@@ -16,26 +16,27 @@
       <li>Dongjoo</li>
     </ol>
     <h2>MATCHES</h2>
-    <input id="match-date" type="date" />
-    <input id="match-time" type="time" />
-    <div class="match-players">
-      <select id="player-1">
-        <option value="">--Please choose a player--</option>
-        <option value="Gianni">Gianni</option>
-        <option value="Dongjoo">Dongjoo</option>
-        <option value="Mattia">Mattia</option>
-      </select>
-      <select id="player-2">
-        <option value="">--Please choose a player--</option>
-        <option value="Gianni">Gianni</option>
-        <option value="Dongjoo">Dongjoo</option>
-        <option value="Mattia">Mattia</option>
-      </select>
+    <div class="match-display" id="match-card">
+      <div class="date-time">
+        <input type="date" />
+        <input type="time" />
+      </div>
+      <h3>Match 1</h3>
+      <div class="match-players">
+        <select>
+          <option value="">--Please choosel a player--</option>
+          <option value="Gianni">Gianni</option>
+          <option value="Dongjoo">Dongjoo</option>
+          <option value="Mattia">Mattia</option>
+        </select>
+        <select>
+          <option value="">--Please choosel a player--</option>
+          <option value="Gianni">Gianni</option>
+          <option value="Dongjoo">Dongjoo</option>
+          <option value="Mattia">Mattia</option>
+        </select>
+      </div>
     </div>
-    <!-- <div class="match-score">
-      <input id="score-1" type="number" />
-      <input id="score-2" type="number" />
-    </div> -->
     <button id="add-match">Add match</button>
     <div id="match-info"></div>
   </body>

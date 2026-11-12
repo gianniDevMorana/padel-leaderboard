@@ -1,10 +1,11 @@
 #match-info,
 .match-display {
-  width: 210px;
+  width: 360px;
   height: 170px;
   display: flex;
   flex-direction: column;
   text-align: center;
+  display: none;
 }
 
 .match-display {
@@ -18,6 +19,7 @@
   justify-content: space-around;
 }
 
-.match-sets {
+.match-sets,
+.time-date {
   display: flex;
 }
