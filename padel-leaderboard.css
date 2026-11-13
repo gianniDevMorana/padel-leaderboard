@@ -2,7 +2,6 @@
 .match-display {
   width: 360px;
   height: 170px;
-  display: flex;
   flex-direction: column;
   text-align: center;
   display: none;
@@ -22,4 +21,5 @@
 #games-sets,
 .time-date {
   display: flex;
+  justify-content: center;
 }
