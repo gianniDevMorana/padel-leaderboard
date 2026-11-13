@@ -19,7 +19,7 @@
   justify-content: space-around;
 }
 
-.match-sets,
+#games-sets,
 .time-date {
   display: flex;
 }
