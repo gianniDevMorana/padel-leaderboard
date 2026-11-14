@@ -18,17 +18,17 @@
     <h2>MATCHES</h2>
     <div class="match-display" id="match-card">
       <div class="date-time">
-        <input type="date" />
-        <input type="time" />
+        <input type="date" id="match-date" />
+        <input type="time" id="match-time" />
       </div>
       <div class="match-players">
-        <select>
+        <select id="player-1">
           <option value="">--Please choosel a player--</option>
           <option value="Gianni">Gianni</option>
           <option value="Dongjoo">Dongjoo</option>
           <option value="Mattia">Mattia</option>
         </select>
-        <select>
+        <select id="player-2">
           <option value="">--Please choosel a player--</option>
           <option value="Gianni">Gianni</option>
           <option value="Dongjoo">Dongjoo</option>
@@ -37,7 +37,7 @@
       </div>
       <button id="create-set-btn">Create Set</button>
       <div id="match-sets"></div>
-      <button id="generate-match-btn">Generate Match</button>
+      <button id="save-match-btn">Save Match</button>
     </div>
     <button id="add-match-btn">Add match</button>
     <div id="match-info"></div>

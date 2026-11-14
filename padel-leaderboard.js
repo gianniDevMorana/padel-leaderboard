@@ -3,8 +3,10 @@ const matchDate = document.getElementById("match-date");
 const matchTime = document.getElementById("match-time");
 const player1 = document.getElementById("player-1");
 const player2 = document.getElementById("player-2");
+const saveMatchBtn = document.getElementById("save-match-btn");
 
 addMatchBtn.addEventListener("click", generateMatchCard);
+saveMatchBtn.addEventListener("click", saveMatchCard);
 
 function generateMatchCard() {
   const matchCard = document.getElementById("match-card");
@@ -39,9 +41,11 @@ function generateMatchCard() {
   });
 }
 
+function saveMatchCard() {
+  const matchCard = document.getElementById("match-card");
+  matchCard.style.display = "none";
+  addMatchBtn.style.display = "inline";
 
-
-function createMatch() {
   const dateTime = matchDate.value + " " + matchTime.value;
 
   console.log(dateTime);
