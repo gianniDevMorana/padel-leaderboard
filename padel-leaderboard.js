@@ -9,6 +9,7 @@ addMatchBtn.addEventListener("click", generateMatchCard);
 function generateMatchCard() {
   const matchCard = document.getElementById("match-card");
   matchCard.style.display = "flex";
+  addMatchBtn.style.display = "none";
   const createSetBtn = document.getElementById("create-set-btn");
   createSetBtn.addEventListener("click", function () {
     const matchSets = document.getElementById("match-sets");
@@ -37,6 +38,8 @@ function generateMatchCard() {
     gamesSets.appendChild(player2Set);
   });
 }
+
+
 
 function createMatch() {
   const dateTime = matchDate.value + " " + matchTime.value;
