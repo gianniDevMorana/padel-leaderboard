@@ -56,8 +56,8 @@ function saveMatchCard() {
     date: dateMatch.getTime(),
     p1: player1.value,
     p2: player2.value,
-    // scoreP1: score1.value,
-    // scoreP2: score2.value,
+    p1Sets: "Player 1 sets",
+    p2Sets: "Player 2 sets"
   };
 
   console.log(match);
