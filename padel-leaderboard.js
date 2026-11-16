@@ -4,16 +4,16 @@ const matchTime = document.getElementById("match-time");
 const player1 = document.getElementById("player-1");
 const player2 = document.getElementById("player-2");
 const saveMatchBtn = document.getElementById("save-match-btn");
+const createSetBtn = document.getElementById("create-set-btn");
 
 addMatchBtn.addEventListener("click", generateMatchCard);
 saveMatchBtn.addEventListener("click", saveMatchCard);
+createSetBtn.addEventListener("click", createSets)
 
 function generateMatchCard() {
   const matchCard = document.getElementById("match-card");
   matchCard.style.display = "flex";
   addMatchBtn.style.display = "none";
-  const createSetBtn = document.getElementById("create-set-btn");
-  createSetBtn.addEventListener("click", createSets)
 }
 
 function createSets() {
