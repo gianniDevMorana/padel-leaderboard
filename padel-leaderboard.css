@@ -19,7 +19,7 @@
   justify-content: space-around;
 }
 
-#games-sets,
+.games-sets,
 .time-date {
   display: flex;
   justify-content: center;

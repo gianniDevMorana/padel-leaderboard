@@ -13,11 +13,16 @@ function generateMatchCard() {
   matchCard.style.display = "flex";
   addMatchBtn.style.display = "none";
   const createSetBtn = document.getElementById("create-set-btn");
-  createSetBtn.addEventListener("click", function () {
+  createSetBtn.addEventListener("click", createSets)
+}
+
+function createSets() {
     const matchSets = document.getElementById("match-sets");
     const gamesSets = document.createElement("div");
-    gamesSets.setAttribute("id", "games-sets");
+    gamesSets.setAttribute("class", "games-sets");
+    
     const player1Set = document.createElement("select");
+    player1Set.setAttribute("class", "p1-set-select");
     for (let i = 0; i < 8; i++) {
       const i1Option = document.createElement("option");
       i1Option.setAttribute("value", i);
@@ -27,6 +32,7 @@ function generateMatchCard() {
     }
 
     const player2Set = document.createElement("select");
+    player2Set.setAttribute("class", "p2-set-select");
     for (let i = 0; i < 8; i++) {
       const i2Option = document.createElement("option");
       i2Option.setAttribute("value", i);
@@ -38,8 +44,7 @@ function generateMatchCard() {
     matchSets.appendChild(gamesSets);
     gamesSets.appendChild(player1Set);
     gamesSets.appendChild(player2Set);
-  });
-}
+  };
 
 function saveMatchCard() {
   const matchCard = document.getElementById("match-card");
@@ -47,6 +52,11 @@ function saveMatchCard() {
   addMatchBtn.style.display = "inline";
 
   const dateTime = matchDate.value + " " + matchTime.value;
+
+  const p1Sets = document.querySelectorAll(".p1-set-select");
+  console.log(p1Sets.values);
+  const p2Sets = document.querySelectorAll(".p2-set-select");
+  console.log(p2Sets.values);
 
   console.log(dateTime);
 
@@ -56,8 +66,8 @@ function saveMatchCard() {
     date: dateMatch.getTime(),
     p1: player1.value,
     p2: player2.value,
-    p1Sets: "Player 1 sets",
-    p2Sets: "Player 2 sets"
+    p1Sets: p1Sets.values,
+    p2Sets: p2Sets.values
   };
 
   console.log(match);
