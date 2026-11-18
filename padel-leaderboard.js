@@ -91,7 +91,13 @@ function saveMatchCard() {
   renderMatchCard(match.date, match.p1, match.p2, match.p1Sets, match.p2Sets);
 }
 
-function renderMatchCard(timestamp, player1, player2, player1Sets, player2Sets) {
+function renderMatchCard(
+  timestamp,
+  player1,
+  player2,
+  player1Sets,
+  player2Sets,
+) {
   const matchHistory = document.getElementById("match-history");
   const matchSaved = document.createElement("div");
   matchSaved.setAttribute("id", "match-saved");
@@ -108,7 +114,13 @@ function renderMatchCard(timestamp, player1, player2, player1Sets, player2Sets) 
   for (let i = 0; i < player1Sets; i++) {
     player1SetsSaved.innerText = player1Sets[i];
   }
-   
+
+  const player2SetsContainer = document.createElement("div");
+  const player2SetsSaved = document.createElement("p");
+  for (let i = 0; i < player2Sets; i++) {
+    player1SetsSaved.innerText = player2Sets[i];
+  }
+
   matchHistory.appendChild(matchSaved);
   matchSaved.appendChild(matchTimestamp);
   matchSaved.appendChild(playersSaved);
@@ -116,6 +128,8 @@ function renderMatchCard(timestamp, player1, player2, player1Sets, player2Sets) 
   playersSaved.appendChild(player2Saved);
   matchSaved.appendChild(player1SetsContainer);
   player1SetsContainer.appendChild(player1SetsSaved);
+  matchSaved.appendChild(player2SetsContainer);
+  player2SetsContainer.appendChild(player2SetsSaved);
 }
 
 function onLoad() {
