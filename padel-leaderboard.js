@@ -100,7 +100,7 @@ function renderMatchCard(
 ) {
   const matchHistory = document.getElementById("match-history");
   const matchSaved = document.createElement("div");
-  matchSaved.setAttribute("id", "match-saved");
+  matchSaved.setAttribute("class", "match-saved");
   const matchTimestamp = document.createElement("p");
   matchTimestamp.innerText = new Date(timestamp);
   const playersSaved = document.createElement("div");
@@ -110,16 +110,21 @@ function renderMatchCard(
   const player2Saved = document.createElement("p");
   player2Saved.innerText = player2;
   const playerSetsContainer = document.createElement("div");
+  playerSetsContainer.setAttribute("class", "sets-saved");
+  const player1SetsContainer = document.createElement("div");
+  player1SetsContainer.setAttribute("class", "set-p1-saved");
   for (let i = 0; i < player1Sets.length; i++) {
     const player1SetsSaved = document.createElement("p");
     player1SetsSaved.innerText = player1Sets[i];
-    playerSetsContainer.appendChild(player1SetsSaved);
+    player1SetsContainer.appendChild(player1SetsSaved);
   }
 
+  const player2SetsContainer = document.createElement("div");
+  player2SetsContainer.setAttribute("class", "set-p2-saved");
   for (let i = 0; i < player2Sets.length; i++) {
     const player2SetsSaved = document.createElement("p");
     player2SetsSaved.innerText = player2Sets[i];
-    playerSetsContainer.appendChild(player2SetsSaved);
+    player2SetsContainer.appendChild(player2SetsSaved);
   }
 
   matchHistory.appendChild(matchSaved);
@@ -128,6 +133,8 @@ function renderMatchCard(
   playersSaved.appendChild(player1Saved);
   playersSaved.appendChild(player2Saved);
   matchSaved.appendChild(playerSetsContainer);
+  playerSetsContainer.appendChild(player1SetsContainer);
+  playerSetsContainer.appendChild(player2SetsContainer);
 }
 
 function onLoad() {
@@ -141,6 +148,7 @@ function onLoad() {
     console.log(match.p1Sets);
     console.log(match.p2Sets);
     console.log(i + 1);
+    renderMatchCard(match.date, match.p1, match.p2, match.p1Sets, match.p2Sets);
   }
 }
 

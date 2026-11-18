@@ -25,9 +25,9 @@
   justify-content: center;
 }
 
-#match-saved {
+.match-saved {
   width: 360px;
-  height: 170px;
+  min-height: 170px;
   flex-direction: column;
   text-align: center;
   border: 2px solid black;
@@ -39,4 +39,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.set-p1-saved,
+.set-p2-saved {
+  display: flex;
+  flex-direction: column;
 }
