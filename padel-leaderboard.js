@@ -53,13 +53,13 @@ function saveMatchCard() {
 
   const dateTime = matchDate.value + " " + matchTime.value;
 
-  const p1Sets = document.querySelectorAll(".p1-set-select");
+  const p1Sets = document.getElementsByClassName("p1-set-select");
   const p1Games = [];
   for (let i = 0; i < p1Sets.length; i++) {
     p1Games.push(Number(p1Sets[i].value));
   }
 
-  const p2Sets = document.querySelectorAll(".p2-set-select");
+  const p2Sets = document.getElementsByClassName("p2-set-select");
   const p2Games = [];
   for (let i = 0; i < p2Sets.length; i++) {
     p2Games.push(Number(p2Sets[i].value));
@@ -83,12 +83,39 @@ function saveMatchCard() {
 
   const matches = JSON.parse(localStorage.getItem("matches"));
 
-  // generateMatchCard(match.date, match.p1, match.p2, matches.length + 1);
-
   matches.push(match);
   console.log(matches);
 
   localStorage.setItem("matches", JSON.stringify(matches));
+
+  renderMatchCard(match.date, match.p1, match.p2, match.p1Sets, match.p2Sets);
+}
+
+function renderMatchCard(timestamp, player1, player2, player1Sets, player2Sets) {
+  const matchHistory = document.getElementById("match-history");
+  const matchSaved = document.createElement("div");
+  matchSaved.setAttribute("id", "match-saved");
+  const matchTimestamp = document.createElement("p");
+  matchTimestamp.innerText = new Date(timestamp);
+  const playersSaved = document.createElement("div");
+  playersSaved.setAttribute("class", "players-saved");
+  const player1Saved = document.createElement("p");
+  player1Saved.innerText = player1;
+  const player2Saved = document.createElement("p");
+  player2Saved.innerText = player2;
+  const player1SetsContainer = document.createElement("div");
+  const player1SetsSaved = document.createElement("p");
+  for (let i = 0; i < player1Sets; i++) {
+    player1SetsSaved.innerText = player1Sets[i];
+  }
+   
+  matchHistory.appendChild(matchSaved);
+  matchSaved.appendChild(matchTimestamp);
+  matchSaved.appendChild(playersSaved);
+  playersSaved.appendChild(player1Saved);
+  playersSaved.appendChild(player2Saved);
+  matchSaved.appendChild(player1SetsContainer);
+  player1SetsContainer.appendChild(player1SetsSaved);
 }
 
 function onLoad() {
@@ -102,8 +129,6 @@ function onLoad() {
     console.log(match.p1Sets);
     console.log(match.p2Sets);
     console.log(i + 1);
-
-    //  generateMatchCard(match.date, match.p1, match.p2, i + 1);
   }
 }
 
