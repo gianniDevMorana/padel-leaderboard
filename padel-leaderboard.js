@@ -52,6 +52,7 @@ function saveMatchCard() {
   addMatchBtn.style.display = "inline";
 
   const dateTime = matchDate.value + " " + matchTime.value;
+  const dateMatch = new Date(dateTime);
 
   const p1Sets = document.getElementsByClassName("p1-set-select");
   const p1Games = [];
@@ -65,7 +66,9 @@ function saveMatchCard() {
     p2Games.push(Number(p2Sets[i].value));
   }
 
-  const dateMatch = new Date(dateTime);
+  if (!p1Games.includes(7) || !p2Games.includes(7)) {
+    return;
+  }
 
   const match = {
     date: dateMatch.getTime(),
