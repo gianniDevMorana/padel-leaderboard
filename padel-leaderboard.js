@@ -48,8 +48,6 @@ function createSets() {
 
 function saveMatchCard() {
   const matchCard = document.getElementById("match-card");
-  matchCard.style.display = "none";
-  addMatchBtn.style.display = "inline";
 
   const dateTime = matchDate.value + " " + matchTime.value;
   const dateMatch = new Date(dateTime);
@@ -66,9 +64,17 @@ function saveMatchCard() {
     p2Games.push(Number(p2Sets[i].value));
   }
 
-  if (!p1Games.includes(7) || !p2Games.includes(7)) {
-    return;
+  for (let i = 0; i < p1Games.length; i++) {
+    for (let j = 0; j < p2Games.length; j++) {
+      if (p1Games[i] !== 7 && p2Games[j] !== 7) {
+        return;
+      }
+    }
   }
+
+  matchCard.style.display = "none";
+  addMatchBtn.style.display = "inline";
+
 
   const match = {
     date: dateMatch.getTime(),
