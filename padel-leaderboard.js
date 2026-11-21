@@ -109,6 +109,14 @@ function saveMatchCard() {
   localStorage.setItem("matches", JSON.stringify(matches));
 
   renderMatchCard(match.date, match.p1, match.p2, match.p1Sets, match.p2Sets);
+
+  matchDate.value = "";
+  matchTime.value = "";
+  player1.value = "";
+  player2.value = "";
+
+  const matchSets = document.getElementById("match-sets");
+  matchSets.innerHTML = "";
 }
 
 function renderMatchCard(
