@@ -78,11 +78,11 @@ function saveMatchCard() {
     return;
   }
 
-  for (let i = 0; i < p1Games.length; i++) {
-    if (p1Games[i] !== 7 && p2Games[i] !== 7) {
-      return;
-    }
-  }
+  // for (let i = 0; i < p1Games.length; i++) {
+  //   if ((p1Games[i] !== 6 && p2Games[i] >= 6) && (p1Games[i] >= 6 && p2Games[i] !== 6) && (p1Games[i] !== 6 && p2Games[i] !== 7) && (p1Games[i] !== 7 && p2Games[i] !== 6)) {
+  //     return;
+  //   }
+  // }
 
   matchCard.style.display = "none";
   addMatchBtn.style.display = "inline";
@@ -108,7 +108,7 @@ function saveMatchCard() {
 
   localStorage.setItem("matches", JSON.stringify(matches));
 
-  renderMatchCard(match.date, match.p1, match.p2, match.p1Sets, match.p2Sets);
+  sortMatchesCards();
 
   matchDate.value = "";
   matchTime.value = "";
@@ -165,15 +165,19 @@ function renderMatchCard(
   playerSetsContainer.appendChild(player2SetsContainer);
 }
 
-function onLoad() {
-if (localStorage.getItem("matches") === null) {
-    localStorage.setItem("matches", JSON.stringify([]));
-  }
+function compareDates(a, b) {
+  return b.date - a.date;
+}
 
+function sortMatchesCards() {
   const matches = JSON.parse(localStorage.getItem("matches"));
-  console.log(matches);
 
-  for (let i = 0; i < matches.length; i++) {
+   matches.sort(compareDates);
+
+   const matchHistory = document.getElementById("match-history");
+   matchHistory.innerHTML = "";
+
+    for (let i = 0; i < matches.length; i++) {
     const match = matches[i];
     console.log(match.p1);
     console.log(match.p2);
@@ -182,6 +186,14 @@ if (localStorage.getItem("matches") === null) {
     console.log(i + 1);
     renderMatchCard(match.date, match.p1, match.p2, match.p1Sets, match.p2Sets);
   }
+}
+
+function onLoad() {
+if (localStorage.getItem("matches") === null) {
+    localStorage.setItem("matches", JSON.stringify([]));
+  }
+
+  sortMatchesCards();
 }
 
 onLoad();
