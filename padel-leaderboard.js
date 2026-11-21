@@ -64,17 +64,28 @@ function saveMatchCard() {
     p2Games.push(Number(p2Sets[i].value));
   }
 
+  if (
+    !matchDate.value ||
+    !matchTime.value ||
+    !player1.value ||
+    !player2.value ||
+    player1.value === player2.value
+  ) {
+    return;
+  }
+
+  if (p1Games.length === 0 || p2Games.length === 0) {
+    return;
+  }
+
   for (let i = 0; i < p1Games.length; i++) {
-    for (let j = 0; j < p2Games.length; j++) {
-      if (p1Games[i] !== 7 && p2Games[j] !== 7) {
-        return;
-      }
+    if (p1Games[i] !== 7 && p2Games[i] !== 7) {
+      return;
     }
   }
 
   matchCard.style.display = "none";
   addMatchBtn.style.display = "inline";
-
 
   const match = {
     date: dateMatch.getTime(),
@@ -147,6 +158,10 @@ function renderMatchCard(
 }
 
 function onLoad() {
+if (localStorage.getItem("matches") === null) {
+    localStorage.setItem("matches", JSON.stringify([]));
+  }
+
   const matches = JSON.parse(localStorage.getItem("matches"));
   console.log(matches);
 
