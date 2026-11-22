@@ -195,8 +195,21 @@ function sortMatchesCards(savedMatches) {
     console.log(match.p1Sets);
     console.log(match.p2Sets);
     console.log(i + 1);
+
+    dateFormatting(match.date);
+
     renderMatchCard(match.date, match.p1, match.p2, match.p1Sets, match.p2Sets);
   }
+}
+
+function dateFormatting(timestamp) {
+  const matchDateSaved = new Date(timestamp);
+  const matchDay = matchDateSaved.getDate();
+  const matchMonth = matchDateSaved.getMonth() + 1;
+  const matchYear = matchDateSaved.getFullYear();
+
+  const dateMatchFormat = matchYear + "-" + String(matchMonth).padStart(2, "0") + "-" + String(matchDay).padStart(2, "0");
+  return dateMatchFormat;
 }
 
 function onLoad() {
