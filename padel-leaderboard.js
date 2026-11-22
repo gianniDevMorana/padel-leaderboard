@@ -191,6 +191,8 @@ function sortMatchesCards(savedMatches) {
   const dateSelect = document.getElementById("date-select");
   dateSelect.innerHTML = "";
 
+  const uniqueDates = [];
+
   for (let i = 0; i < savedMatches.length; i++) {
     const match = savedMatches[i];
     console.log(match.p1);
@@ -201,7 +203,26 @@ function sortMatchesCards(savedMatches) {
 
     const dayKey = dateFormatting(match.date);
 
-    renderMatchCard(match.date, match.p1, match.p2, match.p1Sets, match.p2Sets);
+    if (!uniqueDates.includes(dayKey)) {
+      uniqueDates.push(dayKey);
+    }
+
+    if (dateSelect.value === dayKey) {
+      dateSelect.addEventListener("change", showSelectDateMatch(match.date));
+    }
+
+    // renderMatchCard(match.date, match.p1, match.p2, match.p1Sets, match.p2Sets);
+  }
+
+  function showSelectDateMatch(date) {
+    renderMatchCard(date, match.p1, match.p2, match.p1Sets, match.p2Sets);
+  }
+
+  for (let i = 0; i < uniqueDates.length; i++) {
+    const dateOption = document.createElement("option");
+    dateOption.setAttribute("value", uniqueDates[i]);
+    dateOption.innerText = `${uniqueDates[i]}`;
+    dateSelect.appendChild(dateOption);
   }
 }
 
