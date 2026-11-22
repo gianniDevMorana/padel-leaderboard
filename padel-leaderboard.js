@@ -201,6 +201,8 @@ function sortMatchesCards() {
     console.log(i + 1);
     renderMatchCard(match.date, match.p1, match.p2, match.p1Sets, match.p2Sets);
   }
+
+  localStorage.setItem("matches", JSON.stringify(matches));
 }
 
 function onLoad() {
