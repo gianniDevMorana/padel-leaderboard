@@ -78,11 +78,26 @@ function saveMatchCard() {
     return;
   }
 
-  // for (let i = 0; i < p1Games.length; i++) {
-  //   if ((p1Games[i] !== 6 && p2Games[i] >= 6) && (p1Games[i] >= 6 && p2Games[i] !== 6) && (p1Games[i] !== 6 && p2Games[i] !== 7) && (p1Games[i] !== 7 && p2Games[i] !== 6)) {
-  //     return;
-  //   }
-  // }
+  for (let i = 0; i < p1Games.length; i++) {
+    let isValidSet = false;
+    let isValidTiebreak = false;
+
+    if (
+      (p1Games[i] === 6 && p2Games[i] < 6) ||
+      (p1Games[i] < 6 && p2Games[i] === 6)
+    ) {
+      isValidSet = true;
+    }
+
+    if (
+      (p1Games[i] === 7 && p2Games[i] === 6) ||
+      (p1Games[i] === 6 && p2Games[i] === 7)
+    ) {
+      isValidTiebreak = true;
+    }
+
+    if (!isValidSet && !isValidTiebreak) return;
+  }
 
   matchCard.style.display = "none";
   addMatchBtn.style.display = "inline";
