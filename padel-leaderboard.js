@@ -178,6 +178,38 @@ function renderMatchCard(
   playerSetsContainer.appendChild(player2SetsContainer);
 }
 
+function renderSelectDateMatch() {
+  const matches = JSON.parse(localStorage.getItem("matches"));
+
+  matches.sort(compareDates);
+
+  const matchHistory = document.getElementById("match-history");
+  matchHistory.innerHTML = "";
+
+  const dateSelect = document.getElementById("date-select");
+
+  for (let i = 0; i < matches.length; i++) {
+    const match = matches[i];
+    console.log(match.p1);
+    console.log(match.p2);
+    console.log(match.p1Sets);
+    console.log(match.p2Sets);
+    console.log(i + 1);
+
+    const dayKey = dateFormatting(match.date);
+
+    if (dateSelect.value === dayKey) {
+      renderMatchCard(
+        match.date,
+        match.p1,
+        match.p2,
+        match.p1Sets,
+        match.p2Sets,
+      );
+    }
+  }
+}
+
 function compareDates(a, b) {
   return b.date - a.date;
 }
@@ -207,23 +239,18 @@ function sortMatchesCards(savedMatches) {
       uniqueDates.push(dayKey);
     }
 
-    if (dateSelect.value === dayKey) {
-      dateSelect.addEventListener("change", showSelectDateMatch(match.date));
-    }
-
     // renderMatchCard(match.date, match.p1, match.p2, match.p1Sets, match.p2Sets);
   }
 
-  function showSelectDateMatch(date) {
-    renderMatchCard(date, match.p1, match.p2, match.p1Sets, match.p2Sets);
-  }
-
   for (let i = 0; i < uniqueDates.length; i++) {
-    const dateOption = document.createElement("option");
-    dateOption.setAttribute("value", uniqueDates[i]);
-    dateOption.innerText = `${uniqueDates[i]}`;
-    dateSelect.appendChild(dateOption);
-  }
+      const dateOption = document.createElement("option");
+      dateOption.setAttribute("value", uniqueDates[i]);
+      dateOption.innerText = `${uniqueDates[i]}`;
+      dateSelect.appendChild(dateOption);
+    }
+
+    dateSelect.addEventListener("change", renderSelectDateMatch);
+    renderSelectDateMatch();
 }
 
 function dateFormatting(timestamp) {
