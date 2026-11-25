@@ -123,6 +123,13 @@ function saveMatchCard() {
 
   sortMatchesCards(matches);
 
+  const dayKey = dateFormatting(match.date);
+  const dateSelect = document.getElementById("date-select");
+
+  dateSelect.value = dayKey;
+  
+  renderSelectDateMatch();
+
   matchDate.value = "";
   matchTime.value = "";
   player1.value = "";
@@ -238,19 +245,17 @@ function sortMatchesCards(savedMatches) {
     if (!uniqueDates.includes(dayKey)) {
       uniqueDates.push(dayKey);
     }
-
-    // renderMatchCard(match.date, match.p1, match.p2, match.p1Sets, match.p2Sets);
   }
 
   for (let i = 0; i < uniqueDates.length; i++) {
-      const dateOption = document.createElement("option");
-      dateOption.setAttribute("value", uniqueDates[i]);
-      dateOption.innerText = `${uniqueDates[i]}`;
-      dateSelect.appendChild(dateOption);
-    }
+    const dateOption = document.createElement("option");
+    dateOption.setAttribute("value", uniqueDates[i]);
+    dateOption.innerText = `${uniqueDates[i]}`;
+    dateSelect.appendChild(dateOption);
+  }
 
-    dateSelect.addEventListener("change", renderSelectDateMatch);
-    renderSelectDateMatch();
+  dateSelect.addEventListener("change", renderSelectDateMatch);
+  renderSelectDateMatch();
 }
 
 function dateFormatting(timestamp) {
