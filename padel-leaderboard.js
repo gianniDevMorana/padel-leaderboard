@@ -127,7 +127,7 @@ function saveMatchCard() {
   const dateSelect = document.getElementById("date-select");
 
   dateSelect.value = dayKey;
-  
+
   renderSelectDateMatch();
 
   matchDate.value = "";
@@ -188,9 +188,17 @@ function renderMatchCard(
 function renderSelectDateMatch() {
   const matches = JSON.parse(localStorage.getItem("matches"));
 
+  const matchHistory = document.getElementById("match-history");
+
+  if (matches.length === 0) {
+    const emptyMatchesMsg = document.createElement("p");
+    emptyMatchesMsg.innerText = "No matches yet.";
+    matchHistory.appendChild(emptyMatchesMsg);
+    return;
+  }
+
   matches.sort(compareDates);
 
-  const matchHistory = document.getElementById("match-history");
   matchHistory.innerHTML = "";
 
   const dateSelect = document.getElementById("date-select");
@@ -222,9 +230,17 @@ function compareDates(a, b) {
 }
 
 function sortMatchesCards(savedMatches) {
+  const matchHistory = document.getElementById("match-history");
+
+  if (savedMatches.length === 0) {
+    const emptyMatchesMsg = document.createElement("p");
+    emptyMatchesMsg.innerText = "No matches yet.";
+    matchHistory.appendChild(emptyMatchesMsg);
+    return;
+  }
+  
   savedMatches.sort(compareDates);
 
-  const matchHistory = document.getElementById("match-history");
   matchHistory.innerHTML = "";
 
   const dateSelect = document.getElementById("date-select");
