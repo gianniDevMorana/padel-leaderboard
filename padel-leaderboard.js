@@ -238,7 +238,7 @@ function sortMatchesCards(savedMatches) {
     matchHistory.appendChild(emptyMatchesMsg);
     return;
   }
-  
+
   savedMatches.sort(compareDates);
 
   matchHistory.innerHTML = "";
@@ -287,6 +287,23 @@ function dateFormatting(timestamp) {
     "-" +
     String(matchDay).padStart(2, "0");
   return dateMatchFormat;
+}
+
+function updateLeaderboard(savedMatches) {
+  const stats = {};
+
+  for (let i = 0; i < savedMatches.length; i++) {
+    const match = savedMatches[i];
+
+    if (!stats[match.p1]) {
+      stats[match.p1] = { wins: 0, losses: 0, played: 0 };
+    }
+    if (!stats[match.p2]) {
+      stats[match.p2] = { wins: 0, losses: 0, played: 0 };
+    }
+    stats[match.p1].played += 1;
+    stats[match.p2].played += 1;
+  }
 }
 
 function onLoad() {
