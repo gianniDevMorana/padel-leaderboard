@@ -137,6 +137,8 @@ function saveMatchCard() {
 
   const matchSets = document.getElementById("match-sets");
   matchSets.innerHTML = "";
+
+  updateLeaderboard(matches);
 }
 
 function renderMatchCard(
@@ -303,6 +305,27 @@ function updateLeaderboard(savedMatches) {
     }
     stats[match.p1].played += 1;
     stats[match.p2].played += 1;
+
+    let p1SetsWin = 0;
+    let p2SetsWin = 0;
+
+    for (let j = 0; j < match.p1Sets.length; j++) {
+      if (match.p1Sets[j] > match.p2Sets[j]) {
+        p1SetsWin += 1;
+      } else if (match.p2Sets[j] > match.p1Sets[j]) {
+        p2SetsWin += 1;
+      }
+    }
+
+    if (p1SetsWin > p2SetsWin) {
+      stats[match.p1].wins += 1;
+      stats[match.p2].losses += 1;
+    } else if (p2SetsWin > p1SetsWin) {
+      stats[match.p2].wins += 1;
+      stats[match.p1].losses += 1;
+    }
+
+    console.log(stats);
   }
 }
 
@@ -314,6 +337,7 @@ function onLoad() {
   const matches = JSON.parse(localStorage.getItem("matches"));
 
   sortMatchesCards(matches);
+  updateLeaderboard(matches);
 }
 
 onLoad();
